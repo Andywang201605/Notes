@@ -15,3 +15,11 @@ $$
 $$
 \log S(\nu) = c_0 + c_1\log\nu + c_2(\log\nu)^2 + ...
 $$
+
+如果取$\nu_0 = 1$ (GHz), 那么casa中的公式变成
+
+$$
+\log S(\nu) = \log S(\nu_0) + \alpha_0\log\nu + \alpha_1(\log\nu)^2 + ...
+$$
+
+因此在设置setjy时，取`reffreq`为'1000.0MHz'，`fluxdensity[0]`为$10^{c_0}$，而`spix`取[$c_1$, $c_2$]
