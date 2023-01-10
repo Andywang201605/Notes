@@ -9,3 +9,5 @@
  
     conda install ipykernel # or pip install ipykernel
     python -m ipykernel install --user --name <env_name> --display-name "<env_display_name>"
+
+(reference: https://ipython.readthedocs.io/en/stable/install/kernel_install.html)
