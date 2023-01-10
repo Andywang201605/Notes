@@ -1,0 +1,496 @@
+\documentclass{article}
+\usepackage{ctex}
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{xcolor}
+\usepackage{multicol}
+\usepackage{amsthm,amsmath,amssymb}
+\usepackage{mathrsfs}
+\usepackage{graphicx}
+
+\geometry{left=2.0cm,right=2.0cm,top=1.5cm,bottom=2.5cm}
+\numberwithin{equation}{section}
+\numberwithin{figure}{section}
+
+\newcommand{\hr}{\begin{center} \line(1,0){500} \end{center}}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+
+\setlength{\parindent}{0pt}
+\begin{document}
+
+\section{The Celestial Sphere}
+	\subsection{Retrograde Motion}
+	The relative orbital motions of Earth and the other planets mean that the time interval between successive oppositions or conjunctions can differ significantly from the amount of time necessary to make one complete orbit relative to the background stars. The former time interval is known as {\bf synodic period} ({\it S}), and the latter tie interval is referred as the {\bf sidereal period} ({\it P}). The relations between the two periods is given by
+	\begin{equation}
+		1/S = 
+		\begin{cases}
+			1/P - 1/P_{\rm Earth} & ({\rm inferior})\\
+			1/P_{\rm Earth} - 1/P & ({\rm superior})
+		\end{cases}
+	\end{equation}
+	
+	\subsection{Positions on the Celestial Sphere}
+	There are many coordinates system for us to locate the source - altitude-azimuth coordinate system, equatorial coordinate system. 
+	
+	{\bf Local sidereal time}(LST) of the observer is defined as the amount of time that has elapsed since the vernal equinox last traversed the meridian.
+	
+
+\section{Celestial Mechanics}
+	\subsection{Elliptical Orbits}
+	{\bf Theroem} - Kepler's Law
+	\begin{itemize}
+		\item {\bf Kepler's First Law}: A planet orbits the Sun in an ellipse, with the Sun at one focus of the ellipse
+		\item {\bf Kepler's Second Law}: A line connecting a planet to the Sun sweeps out equal areas in equal time intervals
+		\item {\bf Kepler's Third Law}: $P^2 = a^3$
+	\end{itemize}
+	The orbit of a planet can be described as $r = \frac{a(1-e^2)}{1+e\cos\theta}$
+	
+	\subsection{Newtownian Mechanics}
+	{\bf Theroem} - Newton's Law
+	\begin{itemize}
+		\item {\bf Newton's First Law}: An object at rest will remain at rest and an object in motion will remain in motion in a straight line at a constant speed unless acted upon by an external force.
+		\item {\bf Newton's Second Law}: ${\bf F}_{\rm net} = \sum_{i=1}^{n}{\bf F}_i=m{\bf a}$; or it can be expressed as ${\bf F}_{\rm net} = m{\bf a} = d{\rm p}/dt$
+		\item {\bf Newton's Third Law}: ${\bf F}_{\rm 12} = -{\bf F}_{\rm 21}$
+	\end{itemize}
+	
+	{\bf Theroem} - Law of Universal Gravitational: $F=G\frac{Mm}{r^2}$
+	
+	The change in potential energy resulting from a change in position between two points is given by:
+	\begin{equation}
+		U_f - U_i = -\int_{{\bf r}_i}^{{\bf r}_j}{\bf F}\cdot d{\bf r}
+	\end{equation}
+	The process can be reversed - ${\bf F} = -\nabla U$
+	
+	If we assume that the potential energy goes to zero at infinity, the gravitational potential is $U=-G\frac{Mm}{r}$
+	
+	For a binary system, we choose a center-of-mass reference frame, so that
+	\begin{equation}
+		\frac{m_1{\bf r}_1+m_2{\bf r}_2}{m_1+m_2} = 0
+	\end{equation}
+	The displacement vector {\bf r} is defined as ${\bf r} = {\bf r}_2 - {\bf r}_1$. Both ${\bf r}_1$ and ${\bf r}_2$ can be rewrittern in terms of {\bf r}
+	\begin{equation}
+		{\bf r}_1 = -\frac{m_2}{m_1+m_2}{\bf r}
+	\end{equation}
+	\begin{equation}
+		{\bf r}_2 = \frac{m_1}{m_1+m_2}{\bf r}
+	\end{equation}
+	Next, define the {\bf reduced mass} to be $\mu = \frac{m_1m_2}{m_1+m_2}$, and the total mass to be $M = m_1 + m_2$.
+	
+	The total energy can be expressed as
+	\begin{equation}
+		E = \frac{1}{2}m_1v_1^2 + \frac{1}{2}m_2v_2^2 - G\frac{m_1m_2}{r} = \frac{1}{2}\mu v^2 - G\frac{M\mu}{r}
+	\end{equation}
+	Similarly, the total orbital angular momentum,
+	\begin{equation}
+		{\bf L} = \mu{\bf r}\times{\bf v}
+	\end{equation}
+	Using the equations above and the law of the graviational force, we can derive the Kepler's law. The equations in a binary system are as followed:
+	\begin{align}
+		r &= \frac{L^2/\mu^2}{GM(1+e\cos\theta)} \\
+		L &= \mu\sqrt{GMa(1-e^2)} \\
+		\frac{dA}{dt} &= \frac{L}{2\mu} \\
+		E &= -G\frac{M\mu}{2a} = -G\frac{m_1m_2}{2a} \\
+		v^2 &= G(m_1 + m_2)\left(\frac{2}{r}-\frac{1}{a}\right) \\
+		P^2 &= \frac{4\pi^2}{G(m_1+m_2)}a^3
+	\end{align}
+	
+	\subsection{The Virial Therorem}
+	The total energy is always one-half of the time-averaged potential energy - this is known as the {\bf virial theorem}
+	\hr {\bf Question} - Prove virial theorem
+	
+	Consider the quantity $Q\equiv\sum_i {\bf p}_i\cdot{\bf r}_i$. The time derivative of $Q$ is
+	\begin{equation}\label{eq:virial1}
+		\frac{dQ}{dt} = \sum_i\left(\frac{d{\bf p}_i}{dt}\cdot{\bf r}_i+\frac{d{\bf r}_i}{dt}\cdot{\bf p}_i\right) 
+	\end{equation}
+	Now, the LHS of the expression is just
+	\begin{equation}
+		\frac{dQ}{dt} = \frac{d}{dt}\sum_i\frac{1}{2}\frac{d}{dt}\left( m_ir_i^2\right) \equiv \frac{1}{2}\frac{d^2I}{dt^2}
+	\end{equation}
+	Substituting back into Eq.(\ref{eq:virial1}),
+	\begin{equation}\label{eq:virial2}
+		\frac{1}{2}\frac{d^2I}{dt^2} - \sum_i\frac{d{\bf r}_i}{dt}\cdot{\bf p}_i = \sum_i\frac{d{\bf p}_i}{dt}\cdot{\bf r}_i = \sum_i{\bf F}_i\cdot{\bf r}_i
+	\end{equation}
+	The second term on the LHS is just
+	\begin{equation}
+		-\sum_i\frac{d{\bf r}_i}{dt}\cdot{\bf p}_i = -\sum_im_i{\bf v}_i\cdot{\bf v}_i = -2K
+	\end{equation}
+	The RHS of eq.(\ref{eq:virial2}) is known as the {\it virial of Clausius}. ${\bf F}_{ij}$ represents the force of interaction between two particles in the system. Considering all of the possible forces acting on $i$,
+	\begin{equation}
+		\sum_i{\bf F}_i\cdot{\bf r}_i = \sum_i\left(\sum_{\substack{j\\j\neq i}}{\bf F}_{ij}\right)\cdot{\bf r}_i
+	\end{equation}
+	Rewriting the position vector of particle $i$ as ${\bf r}_i = \frac{1}{2}({\bf r}_i + {\bf r}_j) + \frac{1}{2}({\bf r}_i - {\bf r}_j)$, we find
+	\begin{equation}
+		\sum_i{\bf F}_i\cdot{\bf r}_i = \frac{1}{2}\sum_i\left(\sum_{\substack{j\\j\neq i}}{\bf F}_{ij}\right)\cdot({\bf r}_i + {\bf r}_j) + \frac{1}{2}\sum_i\left(\sum_{\substack{j\\j\neq i}}{\bf F}_{ij}\right)\cdot({\bf r}_i - {\bf r}_j)
+	\end{equation}
+	From Newton's third law, the first term on the RHS is 0. For a gravitational bounded system, ${\bf F}_{ij} = G\frac{m_im_j}{r_{ij}^3}{\bf r}_{ij}$. Substituting the gravitational force into the second term on the RHS,
+	\begin{equation}
+		\sum_i{\bf F}_i\cdot{\bf r}_i = -\frac{1}{2}\sum_i\sum_{\substack{j\\j\neq i}}G\frac{m_im_j}{r_{ij}} = U
+	\end{equation}
+	Taking the average with respect to time give
+	\begin{equation}
+		\frac{1}{2}\left\langle\frac{d^2I}{dt^2}\right\rangle - 2\left\langle K\right\rangle  = \left\langle U\right\rangle 
+	\end{equation}
+	If the time is long enough, $\frac{1}{2}\left\langle\frac{d^2I}{dt^2}\right\rangle = 0$. The total energy $E = K+U$, so that we get $E = \frac{1}{2}\left\langle U\right\rangle$
+	\hr
+	
+\section{The Continuous Spectrum of Light}
+	\subsection{Stellar Parallax}
+	{\bf Parallax angle} {\it p} (one-half of the maximum change in angular position) allows us to calculate the distance $d$ to the star.
+	\begin{equation}
+		d = \frac{1 {\rm AU}}{\tan p} \simeq \frac{1}{p} {\rm AU}
+	\end{equation}
+	Defining a new unit of distance, the {\bf parsec}, as 1 pc corresponding to the distance of the star whose parallax angle is 1$^{\prime\prime}$, which leads to $d = \frac{1}{p^{\prime\prime}} {\rm pc}$.
+	
+	\subsection{The Magnitude Scale}
+	The brightness of a star is measured in terms of the {\bf radiant flux} $F$. The radiant flux is the total amount of light energy of all wavelengths that crosses a unit area oriented perpendicular to the direction of the light's travel per unit time.
+	$$[F] = {\rm erg}\cdot {\rm s}^{-1}\cdot {\rm cm}^{-2}$$
+	The energy star emitting per second is called {\bf luminosity} $L$.
+	$$[L] = {\rm erg}\cdot{\rm s}^{-1}$$
+	The relation between $F$ and $L$ follows the {\bf inverse square law} for light, which is
+	\begin{equation}
+		F = \frac{L}{4\pi r^2}
+	\end{equation}
+	The flux ratio of stars follows
+	\begin{equation}
+		\frac{F_2}{F_1} = 100^{-(m_2-m_1)/5}
+	\end{equation}
+	{\bf Absolute magnitude}, M, is defined to be the apparent magnitude a star would have if it were located at a distance of 10\,pc. The quantity $m-M$ can be a measure of the distance to a star and it is called the star's {\bf distance modulus}
+	\begin{equation}
+		m - M = 5\log_{10}(d) - 5 = 5\log_{10}\left(\frac{d}{10\,{\rm pc}}\right)
+	\end{equation}
+	The radiant flux the Earth received from the Sun is called {\bf solar irradiance}, which is $F = 1365\,{\rm W}\,{\rm m}^{-2}$. The absolute magnitude and apparent magnitude for the Sun are $M_{sun}=+4.74$ and $m_{sun}=-26.83$ respectively.
+	
+	\subsection{The Wave Nature of Light}
+	The rate at which energy is carried by a light wave is described by {\bf Poynting vector}.
+	\begin{equation}
+		{\bf S} = \frac{1}{\mu_0}{\bf E}\times{\bf B}
+	\end{equation}
+	where {\bf S} has the units of W\,m$^{-2}$. In a vacuum the magnitude of the time-averaged Poynting vector $\left\langle S\right\rangle=\frac{1}{2\mu_0}E_0B_0$.
+	
+	Because an electromagnetic wave carries momentum, it can exert force on a surface hit by the light. The resulting {\bf radiation pressure} depends on whether the light is reflected or absorbed.
+	\begin{equation}
+		F_{\rm rad} = 
+		\begin{cases}
+		\frac{\left\langle S\right\rangle A}{c}\cos\theta & ({\rm absorption}) \\
+		\frac{2\left\langle S\right\rangle A}{c}\cos^2\theta & ({\rm reflection})
+		\end {cases}
+	\end{equation}
+	\red{For absorption, the direction of the radiation pressure is align with the direction of which light travels, but the magnitude need to multiply $\cos\theta$ since the direction is not perpendicular to the surface.}
+	
+	\subsection{Blackbody Radiation}
+	{\bf Blackbody is an ideal emitter reflects no light}. For a blackbody, the relation between spectrum peak wavelength $\lambda_{\rm max}$ and temperature $T$ is known as {\bf Wien's displacement law}:
+	\begin{equation}
+		\lambda_{\rm max}T = 0.0029\,{\rm m}\,{\rm K}
+	\end{equation}
+	Josef Stefan found that the luminosity $L$ of a blackbody of area $A$ and temperature $T$ is given by:
+	\begin{equation}
+		L = A\sigma T^4
+	\end{equation}
+	The Stephan-Boltzmann constant $\sigma$ has the value of $\sigma = 5.67\times10^{-8}\,{\rm W}\,{\rm m}^{-2}\,{\rm K}^{-4}$. For a spherical star of radius $R$, we have $L = 4\pi R^2\sigma T^4$. The {\bf effective temperature} $T_e$ can be used to reflect the luminosity of the star:
+	\begin{equation}
+		F_{\rm surf} = \sigma T_e^4
+	\end{equation}
+	
+	\subsection{The Quantization of Energy}
+	The {\bf Planck function}:
+	\begin{equation}
+		B_\lambda(T) = \frac{2hc^2/\lambda^5}{e^{hc/\lambda kT}-1}\;{\bf OR}\; 
+		B_\nu(T) = \frac{2h\nu^3/c^2}{e^{h\nu/kT}-1}
+	\end{equation}
+	The unit of the Planck function $B_\nu$ is W\,m$^{-2}$\,Hz$^{-1}$\,Sr$^{-1}$.
+	
+	\hr {\bf Question} - Make connection between Planck function and Stephan-Boltzmann equation.
+	
+	For a star with plank function $B_\lambda$, the energy it emits per unit time per unit area per wavelength per sterian is (in spherical coordinates):
+	\begin{equation}
+		B_\lambda d\lambda dA \cos\theta d\Omega = B_\lambda d\lambda dA \cos\theta \sin\theta d\theta d\phi
+	\end{equation}
+	The power emitted from the unit area ($dA$) between $\lambda$ and $\lambda+d\lambda$ is
+	\begin{equation}
+		L_{\lambda,A}d\lambda = \int_{\phi=0}^{2\pi}\int_{\theta=0}^{\pi/2}B_\lambda\cos\theta \sin\theta d\theta d\phi\,d\lambda
+	\end{equation}
+	Integrating all over the surface ($4\pi R^2$),
+	\begin{equation}
+		L_\lambda d\lambda = \int_A L_{\lambda,A}dA\,d\lambda = 4\pi^2R^2B_\lambda\,d\lambda
+	\end{equation}
+	The Stephan-Boltzmann equation shows us the energy a blackbody emits at all wavelengths per unit time. For a spherical blackbody, 
+	\begin{equation}
+		\int_0^\infty L_\lambda d\lambda = 4\pi R^2\sigma T^4
+	\end{equation}
+	which shows that
+	\begin{equation}
+		\int_0^\infty B_\lambda(T) d\lambda =\sigma T^4 / \pi
+	\end{equation}
+	\hr
+	
+	\subsection{The Color Index}
+	The magnitude for a star can be different from wavelength to wavelength. For example, a star's $U-B$ {\bf color index} is the difference between its ultraviolet($U$) and blue($B$) magnitudes: $U-B = M_U - M_B$.
+	The difference between a star's bolometric magnitude and its visual magnitude($V$) is its {\bf bolometric correction} $BC$: $BC = m_{\rm bol} - V = M_{\rm bol} - M_V$.
+	
+	For convenience, we choose magnitude for star Vega ($\alpha$ Lyrae) as zero. For a specific filter $i$ whose wavelength response is $\mathcal{S}_i$. The Magnitude for this wavelength would be,
+	\begin{equation}
+		i = -2.5\log_{10}\left( \int_0^\infty F_\lambda\mathcal{S}_i\,d\lambda\right) + C_i
+	\end{equation}
+	The constant $C_i$ differs in different wavelength and relative to the magnitude of that wavelength for star Vega. Similarly, we can use the same equation to define the bolometric magnitude:
+	\begin{equation}
+		m_{\rm bol} = -2.5\log_{10}\left( \int_0^\infty F_\lambda\,d\lambda\right) + C_{\rm bol}
+	\end{equation}
+	The color index, for example $U-B$ are seen to be
+	\begin{equation}
+		U-B = -2.5\log_{10}\left(\frac{\int_0^\infty F_\lambda\mathcal{S}_U\,d\lambda}{\int_0^\infty F_\lambda\mathcal{S}_B\,d\lambda}\right) + C_{U-B}
+	\end{equation}
+	We can use this approximation, $\int_0^\infty F_\lambda\mathcal{S}_U\,d\lambda \simeq B_{\lambda_0}\Delta$, to do the calculation.
+	
+	The color-color diagram shows the relation between two color indices, for example $U-B$ and $B-V$. For a perfect blackbody, its color-color diagram should be the straight line. However, stars are not true blackbodies, the color indices of main-sequence slightly deviate from the blackbody.
+	\begin{figure}[h!]
+		\begin{center}
+			\includegraphics[width=.5\columnwidth]{img/c3_cc_diagram.png}
+			\caption{Color-color diagram for main-sequence stars. The dashed line is for a blackbody.}
+		\end{center}
+	\end{figure}
+	
+\section{The Theory of Special Relativity}
+	\subsection{The Lorentz Transformations}
+	{\bf Thereom} - Einstein's Postulates
+	\begin{itemize}
+		\item {\bf The Principle of Relativity}: The laws of physics are the same in all inertial reference frame.
+		\item {\bf The Constancy of the Speed of Light}
+	\end{itemize}
+
+	\hr{\bf Question} - Derive the Lorentz Transformation
+	
+	The general transformation between the space and the time coordinates $(x,y,z,t)$ and $(x^\prime,y^\prime,z^\prime,t^\prime)$ of the {\it same event} measured from $S$ and $S^\prime$ are
+	\begin{equation}
+		\begin{cases}
+			x^\prime &= a_{11}x + a_{12}y + a_{13}z + a_{14}t \\
+			y^\prime &= a_{21}x + a_{22}y + a_{23}z + a_{24}t \\
+			z^\prime &= a_{31}x + a_{32}y + a_{33}z + a_{34}t \\
+			t^\prime &= a_{41}x + a_{42}y + a_{43}z + a_{44}t
+		\end{cases}
+	\end{equation}
+	If the transformation equations are not linear, then the length of a moving object or the time interval between two events would depend on the choice of origin for the frame $S$ and $S^\prime$, which is unacceptable. We assume that the relative velocity {\bf u} is in the x-direction. Apparently, $y^\prime=y$ and $z^\prime=z$. Another simplification comes from the last equation. It should give the same result if $y$ is replaced by $-y$ or $z$ is replaced by $-z$, thus $a_{42} = a_{43} = 0$. Finally, considering the motion of the origin $O^\prime$ of frame $S^\prime$. For any points with $(0,y^\prime,z^\prime,t^\prime)$ in frame $S^\prime$, the corresponding coordiante in frame $S$ is $(ut,y,z,t)$. Thus the first equation becomes:
+	\begin{equation}
+		0 = a_{11}ut + a_{12}y + a_{13}z + a_{14}t
+	\end{equation}
+	which implies that $a_{12} = a_{13} = 0$ and $a_{11}u = -a_{14}$. Collecting the results found thus far reveals the equaions have been reduced to
+	\begin{equation}
+		\begin{cases}
+			x^\prime &= a_{11}(x-ut) \\
+			y^\prime &= y \\
+			z^\prime &= z \\
+			t^\prime &= a_{41}x + a_{44}t
+		\end{cases}
+	\end{equation}
+	Suppose that when the origins $O$ and $O^\prime$ coincide at time $t=t^\prime=0$, a flushbulb is set off at the common origins. At a later time $t$, an observer in frame $S$ will measure a spherical wavefront of light with radius $ct$, moving away from the origin $O$ with speed $c$ and satisfying
+	\begin{equation}
+		x^2 + y^2 + z^2 = (ct)^2
+	\end{equation}
+	Similarly, at a time $t^\prime$, an observer in frame $S^\prime$ will measure a spherical wavefront of light with radius $ct^\prime$, moving away from the origin $O^\prime$ with speed $c$ and satisfying
+	\begin{equation}
+		x^{\prime^2} + y^{\prime^2} + z^{\prime^2} = (ct^\prime)^2
+	\end{equation}
+	Thus for the {\it same event} measured from frame $S$ and $S^\prime$, the coordinates follow:
+	\begin{equation}
+		\begin{cases}
+		x^\prime &= \cfrac{x-ut}{\sqrt{1-u^2/c^2}} \\
+		y^\prime &= y \\
+		z^\prime &= z \\
+		t^\prime &= \cfrac{t-ux/c^2}{\sqrt{1-u^2/c^2}}
+		\end{cases}
+	\end{equation}
+	\hr
+	
+	The factor of $\gamma = \cfrac{1}{\sqrt{1-u^2/c^2}}$ is called the {\bf Lorentz factor}.
+	
+	From Lorentz transformation, it is easy to derive the effect of {\bf time dilation}:
+	\begin{equation}
+		\Delta t_{\rm moving} = \cfrac{\Delta t_{\rm rest}}{\sqrt{1-u^2/c^2}}
+	\end{equation}
+	and {\bf length contraction}:
+	\begin{equation}
+		L_{\rm moving} = L_{\rm rest}\sqrt{1-u^2/c^2}
+	\end{equation}
+	
+	From Lorentz transformation, we can get {\bf relativistic velocity transformations} easily
+	\begin{equation}
+		\begin{cases}
+			v_x^\prime &= \cfrac{v_x - u}{1-uv_x/c^2} \\
+			v_y^\prime &= \cfrac{v_y\sqrt{1-u^2/c^2}}{1-uv_x/c^2} \\
+			v_z^\prime &= \cfrac{v_z\sqrt{1-u^2/c^2}}{1-uv_x/c^2} \\
+		\end{cases}
+	\end{equation}
+	For the emitter moves with relativistic speeds $u\approx c$, there would be the {\bf headlight effect}. The cone angle for emission is estimated to be $\sin\theta = \sqrt{1-u^2/c^2} = \gamma^{-1}$
+	
+	\subsection{Doppler Shift}
+	The equation describing the {\bf relativistic Doppler shift} is
+	\begin{equation}
+		\nu_{\rm obs} = \cfrac{\nu_{\rm rest}\sqrt{1-u^2/c^2}}{1+(u/c)\cos\theta}
+	\end{equation}
+	
+	\hr{\bf Question} - Derive the relativistic Doppler shift
+	
+	We assume that the angle between the line of sight and the velocity is $\theta$. The time interval between two consecutive peaks in particle frame is $\Delta t_{\rm rest}$. In the observer frame $\Delta t_{\rm obs} = \cfrac{\Delta t_{\rm rest}}{\sqrt{1-u^2/c^2}}$. However, the latter signal need to go through a long path $u\Delta t_{\rm obs}\cos\theta$ due to geometric reason. The observational interval between two peaks is therefore:
+	\begin{equation}
+		\Delta t_{\rm obs}^\prime = \cfrac{\Delta t_{\rm rest}}{\sqrt{1-u^2/c^2}}[1+(u/c)\cos\theta]
+	\end{equation}
+	So we can get the equation for relativistic doppler shift
+	\begin{equation}
+		\nu_{\rm obs} = \cfrac{\nu_{\rm rest}\sqrt{1-u^2/c^2}}{1+(u/c)\cos\theta}
+	\end{equation}
+	\hr
+	
+	For radial motion, we have $\nu_{\rm obs} = \nu_{\rm rest}\sqrt{\cfrac{1-v_r/c}{1+v_r/c}}$ or $\lambda_{\rm obs} = \lambda_{\rm rest}\sqrt{\cfrac{1+v_r/c}{1-v_r/c}}$. The {\bf redshift parameter} $z$ is used to describe the change in wavelength; it is defined as
+	\begin{equation}
+		z \equiv \cfrac{\lambda_{\rm obs} - \lambda_{\rm rest}}{\lambda_{\rm rest}} = \cfrac{\Delta \lambda}{\lambda_{\rm rest}} = \sqrt{\cfrac{1+v_r/c}{1-v_r/c}} - 1
+	\end{equation}
+	For low speeds, $z = \cfrac{\Delta \lambda}{\lambda_{\rm rest}} \simeq \cfrac{v_r}{c}$.
+	
+	\subsection{Relativistic Momentum and Energy}
+	The {\bf relativistic momentum vector} {\bf p}: ${\bf p} = \gamma m{\bf v}$; the {\bf total relativistic energy} $E$: $E=\gamma mc^2$.
+	The relation between the total energy, rest energy and momentum is:
+	\begin{equation}
+		E^2 = p^2c^2 + m^2c^4
+	\end{equation}
+	
+	\hr{\bf Question} - Deriving the relation between the accelrate rate and force exerting on the object.
+	
+	Using Newton's second law,
+	\begin{equation}\label{eq:ch4_Q1}
+		{\bf F} = \cfrac{d{\bf p}}{dt} = m\gamma^3({\bf v}\cdot{\bf a})\cfrac{\bf v}{c^2} + m\gamma{\bf a}
+	\end{equation}
+	So that
+	\begin{equation}
+		{\bf F}\cdot{\bf v} = m\gamma^3({\bf v}\cdot{\bf a})\cfrac{v^2}{c^2} + m\gamma({\bf v}\cdot{\bf a}) = m\gamma^3({\bf v}\cdot{\bf a})
+	\end{equation}
+	From eq.(\ref{eq:ch4_Q1}),
+	\begin{equation}
+		{\bf a} = \cfrac{{\bf F}}{\gamma m} - \cfrac{m\gamma^3({\bf v}\cdot{\bf a}){\bf v}}{\gamma mc^2} = \cfrac{{\bf F}}{\gamma m} - \cfrac{\bf v}{\gamma mc^2}({\bf F}\cdot{\bf v})
+	\end{equation}
+	\hr
+	
+\section{The Interaction of Light and Matter}
+	\subsection{Spectral Lines}
+	{\bf Theorem} - {\bf Kirchhoff's Laws}
+	\begin{itemize}
+		\item A hot, dense gas or hot solid object produces a continuous spectrum with no dark spectral lines.
+		\item A hot, diffuse gas produce bright spectral lines ({\bf emission lines}).
+		\item A cool, diffuse gas in front of a source of a continous spectrum produces dark spectral lines ({\bf absorption lines}) in the continous spectrum.
+	\end{itemize}
+	Even though the absorption lines produced by hydrogen are much stronger for Vega than for the Sun's, that doesn't mean Vega's composition contains more hydrogen than the Sun's.
+	
+	\subsection{Photons}
+	{\bf Theorem} - {\bf The Photoelectric Effect}
+	When lights shines on a metal surface, electrons are ejected from the surface. The maximum kinetic energy of the ejected electrons is
+	\begin{equation}
+		K_{\rm max} = \cfrac{hc}{\lambda} - \phi
+	\end{equation}
+	where $\phi$ is the {\bf work function} of the metal.
+	
+	{\bf Theorem} - {Compton Effect}
+	Compton considered the collision between a photon and a free electron, initially at rest. The final wavelength $\lambda_f$ is greater than the initial wavelength $\lambda_i$:
+	\begin{equation}
+		\Delta \lambda = \cfrac{h}{m_ec}(1-\cos\theta)
+	\end{equation}
+	
+	\subsection{The Bohr Model of the Atom}
+	The units of Planck Constant, $h$ are the same as them for angular momentum. Bohr quantizised the angular momentum, only these values are allowed:
+	\begin{equation}
+		L = \mu vr = n\hbar
+	\end{equation}
+	For electron and proton two-body system, the inner force ${\bf F} = \cfrac{1}{4\pi\epsilon_0}\cfrac{q_1q_2}{r^2}\hat{\bf r}$. The total energy of the atom is $E = -\cfrac{1}{8\pi\epsilon_0}\cfrac{e^2}{r}$. Under Bohr's quantization of angular momentum, the corresponding radius $r$ allowed is $r_n = \cfrac{4\pi\epsilon_0\hbar^2}{\nu e^2}n^2 \equiv a_0n^2$ and the energy allowed is $E_n = -\cfrac{\mu e^4}{32\pi^2\epsilon_0^2\hbar^2}\cfrac{1}{n^2} = -13.6\,{\rm eV}\cfrac{1}{n^2}$.
+	
+	\subsection{Quantum Mechanics and Wave-Particle Duality}
+	De Broglie extended the wave-particle duality to all of nature:
+	\begin{equation}
+		\begin{cases}
+			\nu &= \cfrac{E}{h} \\
+			\lambda &= \cfrac{h}{p}
+ 		\end{cases}
+	\end{equation}
+	{\bf Theorem} - {\bf Heisenberg's uncertainty principle}
+	\begin{equation}
+		\begin{cases}
+		\Delta x\Delta p &\approx \hbar \\
+		\Delta E\Delta t &\approx \hbar
+		\end{cases}
+	\end{equation}
+	
+	Using Schrodinger's Equation, we can estimate the electron probability distribution of an atom. There are four quantum number to determines the state of the electron: $n,l,m_l,s$. The splitting of spectral lines in a weak magnetic fields is called the {\bf Zeeman effect}. The energy for electrons diverge for different $m_l$, thus there are three spectral lines with $\nu = \nu_0$ and $\nu = \nu_0 \pm \cfrac{eB}{4\pi\mu}$.
+	
+	Nature imposes a set of {\bf selection rules} that restrict certain transitions. For example, only transitions involving $\Delta l = \pm 1$ are allowed. These transitions are referred as {\bf allowed} transitions, while others are referred as {\bf forbidden} transitions.
+	
+\section{Telescope}
+	\subsection{Basic Optics}
+	The path of a light ray through a lens can be understood using {\bf Snell's law} of refraction:
+	\begin{equation}
+		n_{1\lambda}\sin\theta_1 = n_{2\lambda}\sin\theta_2
+	\end{equation}
+	The focal length of a given {\it thin} lens can be calculated directly from its index of refraction and geometry, which is known as {\bf lensmaker's formula}:
+	\begin{equation}
+		\cfrac{1}{f_\lambda} = (n_\lambda-1)\left(\cfrac{1}{R_1}+\cfrac{1}{R_2}\right)
+	\end{equation} 
+	The {\bf focal plane} is defined as the plane passing through the focal point and oriented perpendicular to the optical axis of the system. Using small-angle approximation, on the focal plane, we can find that $y = f\theta$. This leads to the differential relation known as the {\bf plate scale}:
+	\begin{equation}
+		\cfrac{d\theta}{dy} = \cfrac{1}{f}
+	\end{equation}
+	The diffraction of telescope aperture results in the resolution of the telescope. The central bright spot of the diffraction pattern is known as the {\bf Airy disk}. From {\bf Rayleigh criterion}, for a circular aperture:
+	\begin{equation}
+		\theta_{\rm min} = 	\cfrac{\lambda}{D}
+	\end{equation}
+	Unfortunately, the resolution of ground-based optical telescopes is also relative to the weather condition. The quality of the image of a stellar point source at a given observing location at a specific time is referred to as {\bf seeing}
+	
+	Both lens and mirror systems suffer from inherent image distortions known as {\bf abberations}. For example, chromatic abberation, spherical abberation, coma, astigmatism, curvature of field, and distortion of field.
+	
+	Now we need to consider the {\bf brightness} of an image. We begin by considering the {\bf intensity} of the radiation. Some of the energy radiated from an infinitesimal portion of the surface of the source of area $d\sigma$ will enter a cone of differential solid angle $d\Omega$. Consider an object located at a distance $r$ far from a telescope of local length $f$. The amound of energy per second per unit wavelength interval radiated into the solid angle defined by the telescope's aperture $d\Omega_{T,0}$ is given by:
+	\begin{equation}
+		I_0d\Omega_{T,0}dA_0 = I_0\cfrac{A_T}{r^2}dA_0
+	\end{equation}
+	All of the photons coming from $dA_0$ within the solid angle $d\Omega_{T,0}$ must strikes an area $dA_i$ on the focal plane. Therefore,
+	\begin{equation}
+		I_0\cfrac{A_T}{r^2}dA_0 = I_i\cfrac{A_T}{f^2}dA_i
+	\end{equation}
+	Seen from the telescope {\it center}, $d\Omega_{0,T} = d\Omega_{i,T}$, which implies that
+	\begin{equation}
+		\cfrac{dA_0}{r^2} = \cfrac{dA_1}{f^2}
+	\end{equation}
+	Substituting into the expression for the image intensities gives the result that:
+	\begin{equation}
+		I_i = I_0
+	\end{equation}
+	
+	THe concept that describes the effect of the light-gathering power of telescopes is the {\bf illumination} $J$, the amount of light energy per second focused onto a unit area of the resolved image. Defining the focal ratio:
+	\begin{equation}
+		F\equiv\cfrac{f}{D}
+	\end{equation}
+	The illumination is related to the focal ratio by $J \propto \cfrac{1}{F^2}$
+	
+	\subsection{Optical Telescopes}
+	The {\bf angular magnification} for refracting telescopes can be shown to be:
+	\begin{equation}
+		m = \cfrac{f_{\rm obj}}{f_{\rm eye}}
+	\end{equation}
+	{\bf Schmidt} telescope is designed to provide a wide-angle field of view with low distortion. 
+	
+	OTHER THINGS NEED TO BE CONSIDERED: telescope mount, adaptive optics, space-based observations, electronic detectors (CCD).
+	
+	\subsection{Radio Telescope}
+	The strength of a radio source is measured in terms of the {\bf spectral flux density}, $S(\nu)$, the amount of energy per second, per unit frequency interval striking a unit area of the telescope. The amount of energy detected per second becomes:
+	\begin{equation}
+		P = \int_A\int_\nu S(\nu)f_\nu d\nu dA
+	\end{equation}
+	This integral can be simplified to $P = SA\Delta \nu$. The units for radio astronomer used of spectral flux density is jansky(Jy), where $1\,{\rm Jy} = 10^{-26}\,{\rm W}\,{\rm m}^{-2}\,{\rm Hz}^{-1}$.
+	
+	In order to improve resolution, we need a larger apertures or use an interferometry.
+	
+	{\bf ALMA} is composed of 50 12-m diameter antennas working in the frequency from 70\,GHz to 900\,GHz. It can help us probe deeply into dusty regions of space where stars and planets are believed to be forming, as well as to study the earliest stages of galaxy formation.
+	
+	\subsection{Other wavelenghts}
+	{\bf Infrared Astronomy Satellite}(IRAS) helped us detect the dust in orbit around young stars, possibly indicate the formation of the planetary systems. 
+	
+	The {\bf COsmic Background Explorer}(COBE) measured the 2.7\,K blackbody spectrum believed to be the remnant fireball of the Big Bang. 
+	
+	The {\bf Extreme Ultraviolet Explorer} and other ultraviolet telescopes give us import important information concerning mass loss from hot stars, cataclysmic variable stars, and compact objects such as white dwarfs and pulsars. 
+	
+	At shorter wavelength, X-ray and gamma-ray yields information about very energetic phenomena, such as nuclear reaction processes and the environments around black holes. The X-ray observatory {\bf ROSAT} investigate the hot coronas of stars, supernovae remnants and quasars.
+	
+\end{document}
