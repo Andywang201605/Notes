@@ -22,4 +22,4 @@ $$
 \log S(\nu) = \log S(\nu_0) + \alpha_0\log\nu + \alpha_1(\log\nu)^2 + ...
 $$
 
-因此在设置setjy时，取`reffreq`为'1000.0MHz'，`fluxdensity[0]`为$10^{c_0}$，而`spix`取[$c_1$, $c_2$]
+因此在设置setjy时，取`reffreq`为'1000.0MHz'，`fluxdensity[0]`为 $10^{c_0}$ ，而`spix`取[ $c_1$, $c_2$]
